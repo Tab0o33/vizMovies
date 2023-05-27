@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { MovieGalleryComponent } from './movie-gallery/movie-gallery.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { SingleMoviePageComponent } from './single-movie-page/single-movie-page.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         MovieGalleryComponent,
         MovieCardComponent,
-        SingleMoviePageComponent
+        SingleMoviePageComponent,
+        HeaderComponent
     ],
     imports: [
         BrowserModule,
