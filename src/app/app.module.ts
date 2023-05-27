@@ -8,6 +8,7 @@ import { MovieGalleryComponent } from './movie-gallery/movie-gallery.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { SingleMoviePageComponent } from './single-movie-page/single-movie-page.component';
 import { HeaderComponent } from './header/header.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
     declarations: [
@@ -15,7 +16,8 @@ import { HeaderComponent } from './header/header.component';
         MovieGalleryComponent,
         MovieCardComponent,
         SingleMoviePageComponent,
-        HeaderComponent
+        HeaderComponent,
+        MenuComponent
     ],
     imports: [
         BrowserModule,

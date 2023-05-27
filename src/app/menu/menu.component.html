@@ -1,0 +1,4 @@
+<nav class="bg-primary-subtle border border-primary-subtle nav nav-underline nav-fill">
+    <a *ngFor="let item of items" [ngClass]="{ disabled: item.isDisabled }" class="nav-link" [routerLink]="item.route"
+        routerLinkActive="active">{{item.title}}</a>
+</nav>
