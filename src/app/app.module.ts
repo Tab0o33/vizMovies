@@ -9,6 +9,7 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { SingleMoviePageComponent } from './single-movie-page/single-movie-page.component';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { MenuComponent } from './menu/menu.component';
         MovieCardComponent,
         SingleMoviePageComponent,
         HeaderComponent,
-        MenuComponent
+        MenuComponent,
+        RatingComponent
     ],
     imports: [
         BrowserModule,

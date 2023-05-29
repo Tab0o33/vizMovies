@@ -1,6 +1,8 @@
+@import "../../styles.scss";
+
 .header{
     border-bottom: rgb(173, 173, 173) solid 1px;
-    height: 4em;
+    height: $headerHeight;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     gap: 10px;

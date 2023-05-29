@@ -1,9 +1,41 @@
+@import "../../styles.scss";
+
+$headerEtNavHeight: $headerHeight + $navHeight;
+
 .movie-page {
-  box-shadow: lightgray 4px 4px 20px;
-  height: 2.5*16em;
-  width: 2.5*12em;
+  position: absolute;
+  top: $headerEtNavHeight; 
+  left: 0;
+  height: calc(100% - $headerEtNavHeight);
+  width: 100%;
+}
+
+.movie-card{  
+    box-shadow: lightgray 4px 4px 20px;
+    height: calc(100% - 2em);
+    margin: 1em;
+    padding: 1em;
+
   img {
-    width: 100%;
-    height: 100%;
+    height: 2*16em;
+    width: 2*12em;
+    margin: auto;
   }
+
+  .rightSide{
+    padding: 0 0.5em 0 0.5em;
+
+    .title{
+        text-align: center;
+    }
+
+    .description{
+        text-align: justify;
+    }
+
+    .notes{
+        margin-top: 0.5em;
+    }
+  }
+
 }

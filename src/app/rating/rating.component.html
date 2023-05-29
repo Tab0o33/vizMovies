@@ -1,0 +1,10 @@
+<div class="rating">
+    <div>
+        <i class="bi" [ngClass]="rating >= 1 ? 'bi-star-fill' : rating > 0 ? 'bi-star-half' : 'bi-star'"></i>
+        <i class="bi" [ngClass]="rating >= 2 ? 'bi-star-fill' : rating > 1 ? 'bi-star-half' : 'bi-star'"></i>
+        <i class="bi" [ngClass]="rating >= 3 ? 'bi-star-fill' : rating > 2 ? 'bi-star-half' : 'bi-star'"></i>
+        <i class="bi" [ngClass]="rating >= 4 ? 'bi-star-fill' : rating > 3 ? 'bi-star-half' : 'bi-star'"></i>
+        <i class="bi" [ngClass]="rating >= 5 ? 'bi-star-fill' : rating > 4 ? 'bi-star-half' : 'bi-star'"></i>
+    </div>
+    <p>{{title}}</p>
+</div>

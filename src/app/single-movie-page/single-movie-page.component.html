@@ -1,3 +1,15 @@
-<div class="movie-page">
-    <img [src]="movie.imageUrl" [alt]="movie.title">
+<div class="movie-page bg-light">
+    <div class="movie-card d-flex">
+        <img class="" [src]="movie.imageUrl" [alt]="movie.title">
+        <div class="rightSide flex-grow-1 d-flex flex-column align-items-stretch">
+            <h2 class="title">{{movie.title}}</h2>
+            <div class="description">{{movie.description}}</div>
+            <div class="notes container">
+                <div class="row">
+                    <app-rating class="col" [rating]="movie.myRating" [title]="'Ma note'"></app-rating>
+                    <app-rating class="col" [rating]="movie.publicRating" [title]="'Note du public'"></app-rating>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
