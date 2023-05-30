@@ -12,6 +12,7 @@ import { MenuComponent } from './menu/menu.component';
 import { RatingComponent } from './rating/rating.component';
 import { TowatchListComponent } from './towatch-list/towatch-list.component';
 import { TowatchListItemComponent } from './towatch-list-item/towatch-list-item.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { TowatchListItemComponent } from './towatch-list-item/towatch-list-item.
         MenuComponent,
         RatingComponent,
         TowatchListComponent,
-        TowatchListItemComponent
+        TowatchListItemComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,

@@ -3,10 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { MovieGalleryComponent } from './movie-gallery/movie-gallery.component';
 import { SingleMoviePageComponent } from './single-movie-page/single-movie-page.component';
 import { TowatchListComponent } from './towatch-list/towatch-list.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
     { path: 'movie/:id', component: SingleMoviePageComponent },
-    { path: 'toWatchList', component: TowatchListComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'toWatchList', component: TowatchListComponent, canActivate: [AuthGuard] },
     { path: '', component: MovieGalleryComponent },
 
 ];

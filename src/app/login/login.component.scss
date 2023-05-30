@@ -1,0 +1,32 @@
+.login{
+    border: solid black 1px;
+    width: 30em;
+    margin: auto;
+    border: solid rgb(230, 230, 230) 1px;
+    box-shadow: lightgray 4px 4px 5px;
+}
+
+h2{
+    text-align: center;
+}
+
+.form-group {
+  margin: 10px auto;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input, textarea {
+  width: 50%;
+}
+
+.action-buttons {
+  width: 100%;
+}
+
+button {
+  display: block;
+  margin: 20px auto;
+}

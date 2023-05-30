@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header  bg-white">
     <img src="assets/img/logo.png" alt="logo" (click)="onLogoClick()">
     <div class="input-group searchbar">
         <span class="input-group-text" id="basic-addon1">
@@ -7,6 +7,9 @@
         <input type="text" class="form-control" placeholder="Cherchez votre film">
     </div>
     <div class="profil">
-        <button type="button" class="btn btn-primary">Déconnexion</button>
+        <button type="button" class="btn" [ngClass]="isConnected ? 'btn-secondary' : 'btn-primary'"
+            (click)="onButtonClick()">
+            {{isConnected ? 'Déconnexion' : 'Connexion'}}
+        </button>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from '../services/movies.service';
 import { Movie } from '../models/movie.model';
@@ -8,7 +8,7 @@ import { Movie } from '../models/movie.model';
     templateUrl: './single-movie-page.component.html',
     styleUrls: ['./single-movie-page.component.scss']
 })
-export class SingleMoviePageComponent {
+export class SingleMoviePageComponent implements OnInit {
 
     movie!: Movie;
 
