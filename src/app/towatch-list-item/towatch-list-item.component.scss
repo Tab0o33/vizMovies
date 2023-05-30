@@ -1,0 +1,25 @@
+.item{
+    margin: 0.5em 0 0.5em 0;
+    border: solid rgb(230, 230, 230) 1px;
+    box-shadow: lightgray 4px 4px 5px;
+
+    img {
+        height: 0.3*12em;
+        width: 0.3*12em;
+    }
+
+    .title{
+        text-align: center;
+    }
+
+    .icons{
+
+        i{
+            font-size: 2rem;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

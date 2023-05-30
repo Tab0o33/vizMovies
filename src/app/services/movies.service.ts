@@ -6,7 +6,7 @@ import { Movie } from '../models/movie.model';
 })
 export class MoviesService {
 
-    movies: Movie[] = [
+    private movies: Movie[] = [
         {
             id: 1,
             title: 'Spider-Man: Homecoming',

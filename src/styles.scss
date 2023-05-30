@@ -4,6 +4,7 @@
 
 $headerHeight: 4em;
 $navHeight: 3em;
+$headerEtNavHeight: $headerHeight + $navHeight;
 
 body{
     padding: 0%;

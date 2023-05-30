@@ -1,0 +1,15 @@
+@import "../../styles.scss";
+
+
+.page{
+    position: absolute;
+    top: $headerEtNavHeight; 
+    left: 0;
+    height: calc(100% - $headerEtNavHeight);
+    width: 100%;
+}
+
+.items{
+    width: 80%;
+    margin: auto;
+}

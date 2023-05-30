@@ -10,6 +10,8 @@ import { SingleMoviePageComponent } from './single-movie-page/single-movie-page.
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
 import { RatingComponent } from './rating/rating.component';
+import { TowatchListComponent } from './towatch-list/towatch-list.component';
+import { TowatchListItemComponent } from './towatch-list-item/towatch-list-item.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +21,9 @@ import { RatingComponent } from './rating/rating.component';
         SingleMoviePageComponent,
         HeaderComponent,
         MenuComponent,
-        RatingComponent
+        RatingComponent,
+        TowatchListComponent,
+        TowatchListItemComponent
     ],
     imports: [
         BrowserModule,
