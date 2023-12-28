@@ -1,4 +1,4 @@
-<div class="movie-page bg-light">
+<div class="movie-page bg-light" *ngIf="movie$ | async as movie">
     <div class="movie-card d-flex">
         <img class="" [src]="movie.imageUrl" [alt]="movie.title">
         <div class="rightSide flex-grow-1 d-flex flex-column align-items-stretch">

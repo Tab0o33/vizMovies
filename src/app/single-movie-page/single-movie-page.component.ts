@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from '../services/movies.service';
 import { Movie } from '../models/movie.model';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-single-movie-page',
@@ -10,14 +11,14 @@ import { Movie } from '../models/movie.model';
 })
 export class SingleMoviePageComponent implements OnInit {
 
-    movie!: Movie;
+    movie$!: Observable<Movie>;
 
     constructor(private moviesService: MoviesService,
         private route: ActivatedRoute) { }
 
     ngOnInit() {
         const movieId = +this.route.snapshot.params['id'];
-        this.movie = this.moviesService.getMovieById(movieId);
+        this.movie$ = this.moviesService.getMovieById(movieId);
     }
 
 }

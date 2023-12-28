@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -13,6 +14,7 @@ import { RatingComponent } from './rating/rating.component';
 import { TowatchListComponent } from './towatch-list/towatch-list.component';
 import { TowatchListItemComponent } from './towatch-list-item/towatch-list-item.component';
 import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -29,7 +31,9 @@ import { LoginComponent } from './login/login.component';
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
