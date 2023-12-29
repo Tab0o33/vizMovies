@@ -11,7 +11,7 @@ export class MenuComponent implements OnInit {
 
     ngOnInit() {
         this.items = [
-            { title: 'Tous les films', route: '', isDisabled: false },
+            { title: 'Tous les films', route: 'gallery', isDisabled: false },
             { title: 'Films à voir', route: 'toWatchList', isDisabled: false },
             { title: 'Films vus', route: 'watchedList', isDisabled: true },
             { title: 'Suggestion', route: 'suggestion', isDisabled: true },

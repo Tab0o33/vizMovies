@@ -15,6 +15,7 @@ import { TowatchListComponent } from './towatch-list/towatch-list.component';
 import { TowatchListItemComponent } from './towatch-list-item/towatch-list-item.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { FormsModule } from '@angular/forms';
         RatingComponent,
         TowatchListComponent,
         TowatchListItemComponent,
-        LoginComponent
+        LoginComponent,
+        NotFoundComponent
     ],
     imports: [
         BrowserModule,

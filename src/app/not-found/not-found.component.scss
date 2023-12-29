@@ -1,0 +1,19 @@
+@import "../../styles.scss";
+
+
+.full-page {
+  position: absolute;
+  top: $headerEtNavHeight; 
+  left: 0;
+  height: calc(100% - $headerEtNavHeight);
+  width: 100%;
+}
+
+.container-img{  
+
+  img {
+    width: 35em;
+    margin: auto;
+  }
+
+}
