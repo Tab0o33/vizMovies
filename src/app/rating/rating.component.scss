@@ -1,7 +1,11 @@
 .rating{
     text-align: center;
+    
     i{
         font-size: 2rem;
-        color: gold;
+    }
+    
+    i.editable:hover{
+        cursor: pointer;
     }
 }

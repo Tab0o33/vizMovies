@@ -6,8 +6,10 @@
             <div class="description">{{movie.description}}</div>
             <div class="notes container">
                 <div class="row">
-                    <app-rating class="col" [rating]="movie.myRating" [title]="'Ma note'"></app-rating>
-                    <app-rating class="col" [rating]="movie.publicRating" [title]="'Note du public'"></app-rating>
+                    <app-rating *ngIf="isConnected" class="col" [rating]="myRating" [title]="'Ma note'"
+                        [editable]="true" (markChanged)="handleMarkChanged($event)"></app-rating>
+                    <app-rating class="col" [rating]="movie.publicRating" [title]="'Note du public'"
+                        [editable]="false"></app-rating>
                 </div>
             </div>
         </div>

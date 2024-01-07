@@ -1,8 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Movie } from '../models/movie.model';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { API_URL } from '../properties';
+
+const HTTP_OPTIONS = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+    }),
+    withCredentials: true
+};
 
 @Injectable({
     providedIn: 'root'
@@ -17,6 +24,16 @@ export class MoviesService {
 
     getMovieById(movieId: number): Observable<Movie> {
         return this.http.get<Movie>(`${API_URL}/public/movie/${movieId}`);
+    }
+
+    getUserMovie(movieId: number): Observable<Movie> {
+        const url = `${API_URL}/authenticated/user/me/movies/${movieId}`;
+        return this.http.get<Movie>(url);
+    }
+
+    patchUserMovie(movieId: number, updatedData: any): Observable<any> {
+        const url = `${API_URL}/authenticated/user/me/movies/${movieId}`;
+        return this.http.patch(url, updatedData, HTTP_OPTIONS);
     }
 
 }
