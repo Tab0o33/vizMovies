@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { API_URL } from '../properties';
+import { StorageService } from './storage.service';
 
 const AUTH_API = `${API_URL}/public/auth`;
 
@@ -22,39 +22,34 @@ export class AuthService {
     connectedSubject$ = new Subject<boolean>();
 
     constructor(
-        private router: Router,
-        private http: HttpClient) { }
+        private http: HttpClient,
+        private storageService: StorageService
+    ) { }
 
     login(email: String, password: String): Observable<any> {
         const url = AUTH_API + '/login';
-        const data = {
-            email,
-            password
-        };
+        const data = { email, password };
         return this.http.post<any>(url, data, HTTP_OPTIONS);
     }
 
     loginSucceeded() {
         this.isLoggedIn = true;
         this.emitIsLoggedInSubject();
+        this.storageService.setSession();
     }
 
     getIsLoggedIn(): boolean {
         return this.isLoggedIn;
     }
 
-    logout(): void {
-        this.http.post<any>(AUTH_API + '/signout', 'signout', HTTP_OPTIONS).subscribe({
-            next: (v) => {
-                this.isLoggedIn = false;
-                this.emitIsLoggedInSubject();
-                this.router.navigateByUrl('');
-                // msg info vert de 2s genre "vous etes déconnecté"
-            },
-            error: (e) => {
-                console.error(e);
-            }
-        });
+    setIsLoggedIn(value: boolean): void {
+        this.isLoggedIn = value;
+        this.emitIsLoggedInSubject();
+    }
+
+    logout(): Observable<any> {
+        const url = AUTH_API + '/signout';
+        return this.http.post<any>(url, 'signout', HTTP_OPTIONS);
     }
 
     emitIsLoggedInSubject(): void {

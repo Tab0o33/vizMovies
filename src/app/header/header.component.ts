@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
+import { StorageService } from '../services/storage.service';
 
 @Component({
     selector: 'app-header',
@@ -10,17 +11,19 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
 
-    isConnected!: boolean;
+    isConnected: boolean = false;
     isConnectedSubscription!: Subscription;
 
-    constructor(private authService: AuthService,
+    constructor(
+        private authService: AuthService,
+        private storageService: StorageService,
         private router: Router) { }
 
     ngOnInit(): void {
-        this.isConnected = false;
         this.isConnectedSubscription = this.authService.connectedSubject$.subscribe(val => {
             this.isConnected = val;
         });
+        this.authService.emitIsLoggedInSubject();
     }
 
     onLogoClick(): void {
@@ -31,9 +34,21 @@ export class HeaderComponent implements OnInit {
         if (!this.isConnected) {
             this.router.navigateByUrl('login');
         } else {
-            this.isConnected = false;
-            this.authService.logout();
+            this.logout();
         }
     }
 
+    private logout() {
+        this.authService.logout().subscribe({
+            next: (v) => {
+                this.authService.setIsLoggedIn(false);
+                this.router.navigateByUrl('');
+                this.storageService.cleanLocalStorage();
+                // msg info vert de 2s genre "vous etes déconnecté"
+            },
+            error: (e) => {
+                console.error(e);
+            }
+        });
+    }
 }
