@@ -16,6 +16,7 @@ import { TowatchListItemComponent } from './towatch-list-item/towatch-list-item.
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ToggleIswatchedButtonComponent } from './toggle-iswatched-button/toggle-iswatched-button.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
         TowatchListComponent,
         TowatchListItemComponent,
         LoginComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        ToggleIswatchedButtonComponent
     ],
     imports: [
         BrowserModule,

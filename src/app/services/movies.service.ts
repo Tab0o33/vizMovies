@@ -3,6 +3,7 @@ import { Movie } from '../models/movie.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { API_URL } from '../properties';
+import { UserMovie } from '../models/user-movie.model';
 
 const HTTP_OPTIONS = {
     headers: new HttpHeaders({
@@ -34,6 +35,11 @@ export class MoviesService {
     patchUserMovie(movieId: number, updatedData: any): Observable<any> {
         const url = `${API_URL}/authenticated/user/me/movies/${movieId}`;
         return this.http.patch(url, updatedData, HTTP_OPTIONS);
+    }
+
+    getUserMoviesToWatch(): Observable<UserMovie[]> {
+        const url = `${API_URL}/authenticated/user/me/movies?toWatch=true`;
+        return this.http.get<UserMovie[]>(url);
     }
 
 }

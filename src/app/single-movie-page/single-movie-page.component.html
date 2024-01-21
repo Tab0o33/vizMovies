@@ -2,7 +2,23 @@
     <div class="movie-card d-flex">
         <img class="" [src]="movie.imageUrl" [alt]="movie.title">
         <div class="rightSide flex-grow-1 d-flex flex-column align-items-stretch">
-            <h2 class="title">{{movie.title}}</h2>
+
+            <div class="container text-center">
+                <div class="row align-items-start">
+                    <div class="col">
+                        <h2 class="title">{{movie.title}}</h2>
+                    </div>
+                    <div class="col" *ngIf="isConnected">
+                        <app-toggle-iswatched-button [movieId]="movie.id"
+                            [isWatched]="movie.isWatched"></app-toggle-iswatched-button>
+                    </div>
+                    <div class="col" *ngIf="isConnected">
+                        <i class="bi px-1"
+                            [ngClass]="toWatch ? 'bi-bookmark-plus-fill text-success' : 'bi-bookmark-plus text-secondary'"
+                            (click)="toggleToWatch()"></i>
+                    </div>
+                </div>
+            </div>
             <div class="description">{{movie.description}}</div>
             <div class="notes container">
                 <div class="row">

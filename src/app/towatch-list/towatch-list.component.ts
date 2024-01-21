@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { MovieToWatch } from '../models/movie-to-watch.model';
-import { MovieToWatchService } from '../services/movies-to-watch.service';
+import { UserMovie } from '../models/user-movie.model';
+import { MoviesService } from '../services/movies.service';
+import { Observable, finalize, map, shareReplay } from 'rxjs';
 
 @Component({
     selector: 'app-towatch-list',
@@ -9,22 +10,26 @@ import { MovieToWatchService } from '../services/movies-to-watch.service';
 })
 export class TowatchListComponent {
 
-    movies!: MovieToWatch[];
+    movies$!: Observable<UserMovie[]>;
+    loading: boolean = true;
 
-    constructor(private movieToWatchService: MovieToWatchService) { }
+    constructor(private moviesService: MoviesService) { }
 
     ngOnInit() {
-        this.movies = this.movieToWatchService.getAllMoviesToWatch();
+        this.movies$ = this.moviesService.getUserMoviesToWatch().pipe(
+            finalize(() => this.loading = false),
+            shareReplay(1) // Cache the results and replay them for subsequent subscribers
+        );
     }
 
-    deleteItem(itemId: number): void {
-        this.removeElementFromObjectArray(itemId);
-    }
-
-    removeElementFromObjectArray(itemId: number) {
-        this.movies.forEach((value, index) => {
-            if (value.id == itemId) this.movies.splice(index, 1);
-        });
+    deleteItem(movieId: number): void {
+        this.moviesService.patchUserMovie(movieId, { toWatch: false }).subscribe(
+            () => {
+                this.movies$ = this.movies$.pipe(
+                    map(movies => movies.filter(movie => movie.id !== movieId))
+                );
+            }
+        );
     }
 
 }

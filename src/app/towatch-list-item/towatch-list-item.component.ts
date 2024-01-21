@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MovieToWatch } from '../models/movie-to-watch.model';
+import { UserMovie } from '../models/user-movie.model';
 
 @Component({
     selector: 'app-towatch-list-item',
@@ -8,13 +8,9 @@ import { MovieToWatch } from '../models/movie-to-watch.model';
 })
 export class TowatchListItemComponent {
 
-    @Input() movie!: MovieToWatch;
+    @Input() movie!: UserMovie;
 
     @Output() deleteEvent = new EventEmitter<number>();
-
-    onEyeClick(): void {
-        this.movie.isWatched = !this.movie.isWatched;
-    }
 
     onDeleteClick(): void {
         this.deleteEvent.emit(this.movie.id);

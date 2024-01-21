@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from '../services/movies.service';
-import { Movie } from '../models/movie.model';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, shareReplay } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { UserMovie } from '../models/user-movie.model';
 
 @Component({
     selector: 'app-single-movie-page',
@@ -15,10 +15,11 @@ export class SingleMoviePageComponent implements OnInit, OnDestroy {
     isConnected: boolean = false;
     isConnectedSubscription!: Subscription;
 
-    movie$!: Observable<Movie>;
+    movie$!: Observable<any>;
     movieId!: number;
 
     myRating!: number;
+    toWatch: boolean = false;
 
     constructor(private moviesService: MoviesService,
         private authService: AuthService,
@@ -29,9 +30,14 @@ export class SingleMoviePageComponent implements OnInit, OnDestroy {
         this.isConnectedSubscription = this.authService.connectedSubject$.subscribe(value => {
             this.isConnected = value;
             if (this.isConnected) {
-                this.movie$ = this.moviesService.getUserMovie(this.movieId);
+                this.movie$ = this.moviesService.getUserMovie(this.movieId).pipe(
+                    shareReplay(1) // Cache the results and replay them for subsequent subscribers
+                );
                 this.movie$.subscribe(
-                    movie => { this.myRating = movie.myRating; }
+                    (movie: UserMovie) => {
+                        this.myRating = movie.myRating;
+                        this.toWatch = movie.toWatch;
+                    }
                 );
             } else {
                 this.movie$ = this.moviesService.getMovieById(this.movieId);
@@ -47,6 +53,20 @@ export class SingleMoviePageComponent implements OnInit, OnDestroy {
             },
             error => {
                 console.error(error);
+            }
+        );
+    }
+
+    toggleToWatch(): void {
+        const newToWatch = !this.toWatch;
+        console.log(newToWatch);
+        this.moviesService.patchUserMovie(this.movieId, { toWatch: newToWatch }).subscribe(
+            () => {
+                this.toWatch = newToWatch;
+            },
+            error => {
+                console.error(error);
+                // msg info rouge de 2s genre "échec de la MAJ"
             }
         );
     }

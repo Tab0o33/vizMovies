@@ -1,6 +1,29 @@
 <div class="page bg-light pt-2">
-    <div class="items">
-        <app-towatch-list-item *ngFor="let movie of movies" [movie]="movie"
-            (deleteEvent)="deleteItem($event)"></app-towatch-list-item>
-    </div>
+    <ng-container *ngIf="loading && !(movies$ | async); else moviesBlock">
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #moviesBlock>
+        <ng-container *ngIf="(movies$ | async) as movies; else errorBlock">
+            <div class="items" *ngIf="movies && movies.length > 0; else elseBlock">
+                <app-towatch-list-item *ngFor="let movie of movies" [movie]="movie"
+                    (deleteEvent)="deleteItem($event)"></app-towatch-list-item>
+            </div>
+            <ng-template #elseBlock>
+                <div class="alert alert-info w-75 container text-center" role="alert">
+                    Vous n'avez actuellement aucun film dans votre liste de films à voir.
+                </div>
+            </ng-template>
+        </ng-container>
+
+        <ng-template #errorBlock>
+            <div class="alert alert-danger w-75 container text-center" role="alert">
+                Erreur lors du chargement de votre liste. Veuillez réessayer plus tard.
+            </div>
+        </ng-template>
+    </ng-template>
 </div>

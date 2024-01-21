@@ -2,8 +2,7 @@
     <img class="" [src]="movie.imageUrl" [alt]="movie.title">
     <h2 class="flex-grow-1 title align-self-center">{{movie.title}}</h2>
     <div class="d-flex px-2 icons align-self-center">
-        <i class="bi px-1" [ngClass]="movie.isWatched ? 'bi-eye-fill text-info' : 'bi-eye text-secondary'"
-            (click)="onEyeClick()"></i>
+        <app-toggle-iswatched-button [movieId]="movie.id" [isWatched]="movie.isWatched"></app-toggle-iswatched-button>
         <i class="bi bi-trash text-danger px-1" (click)="onDeleteClick()"></i>
     </div>
 </div>
