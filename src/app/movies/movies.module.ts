@@ -7,6 +7,7 @@ import { SingleMoviePageComponent } from './components/single-movie-page/single-
 import { ToggleIswatchedButtonComponent } from './components/toggle-iswatched-button/toggle-iswatched-button.component';
 import { TowatchListItemComponent } from './components/towatch-list-item/towatch-list-item.component';
 import { TowatchListComponent } from './components/towatch-list/towatch-list.component';
+import { MoviesRoutingModule } from './movies-routing.module';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { TowatchListComponent } from './components/towatch-list/towatch-list.com
         ToggleIswatchedButtonComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        MoviesRoutingModule
     ],
     exports: [
         MovieGalleryComponent,
