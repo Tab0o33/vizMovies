@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'app-login',
@@ -25,8 +26,8 @@ export class LoginComponent {
             });
     }
 
-    onLogin() {
-        this.auth.login(this.formEmail, this.formPassword).subscribe({
+    onSubmitForm(form: NgForm) {
+        this.auth.login(form.value.formEmail, form.value.formPassword).subscribe({
             next: (v) => {
                 this.auth.loginSucceeded();
                 this.router.navigateByUrl('');
