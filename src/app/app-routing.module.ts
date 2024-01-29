@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MovieGalleryComponent } from './movie-gallery/movie-gallery.component';
-import { SingleMoviePageComponent } from './single-movie-page/single-movie-page.component';
-import { TowatchListComponent } from './towatch-list/towatch-list.component';
-import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './guards/auth.guard';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { MovieGalleryComponent } from './movies/components/movie-gallery/movie-gallery.component';
+import { SingleMoviePageComponent } from './movies/components/single-movie-page/single-movie-page.component';
+import { TowatchListComponent } from './movies/components/towatch-list/towatch-list.component';
+import { LoginComponent } from './login/components/login/login.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import { NotFoundComponent } from './core/components/not-found/not-found.component';
 
 const routes: Routes = [
     { path: 'movie/:id', component: SingleMoviePageComponent },

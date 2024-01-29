@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MoviesService } from '../services/movies.service';
+import { MoviesService } from '../../../core/services/movies.service';
 
 @Component({
     selector: 'app-toggle-iswatched-button',

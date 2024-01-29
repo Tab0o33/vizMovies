@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { UserMovie } from '../models/user-movie.model';
-import { MoviesService } from '../services/movies.service';
+import { UserMovie } from '../../../core/models/user-movie.model';
+import { MoviesService } from '../../../core/services/movies.service';
 import { Observable, finalize, map, shareReplay } from 'rxjs';
 
 @Component({

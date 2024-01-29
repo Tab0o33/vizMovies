@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { API_URL } from '../properties';
+import { API_URL } from '../../properties';
 import { StorageService } from './storage.service';
 
 const AUTH_API = `${API_URL}/public/auth`;
@@ -9,8 +9,7 @@ const AUTH_API = `${API_URL}/public/auth`;
 const HTTP_OPTIONS = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json'
-    }),
-    withCredentials: true
+    })
 };
 
 @Injectable({

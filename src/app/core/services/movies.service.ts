@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { Movie } from '../models/movie.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { API_URL } from '../properties';
+import { API_URL } from '../../properties';
 import { UserMovie } from '../models/user-movie.model';
 
 const HTTP_OPTIONS = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json'
-    }),
-    withCredentials: true
+    })
 };
 
 @Injectable({

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { UserMovie } from '../models/user-movie.model';
+import { UserMovie } from '../../../core/models/user-movie.model';
 
 @Component({
     selector: 'app-towatch-list-item',

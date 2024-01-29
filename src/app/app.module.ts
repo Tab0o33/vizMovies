@@ -1,43 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
-import { MovieGalleryComponent } from './movie-gallery/movie-gallery.component';
-import { MovieCardComponent } from './movie-card/movie-card.component';
-import { SingleMoviePageComponent } from './single-movie-page/single-movie-page.component';
-import { HeaderComponent } from './header/header.component';
-import { MenuComponent } from './menu/menu.component';
-import { RatingComponent } from './rating/rating.component';
-import { TowatchListComponent } from './towatch-list/towatch-list.component';
-import { TowatchListItemComponent } from './towatch-list-item/towatch-list-item.component';
-import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { ToggleIswatchedButtonComponent } from './toggle-iswatched-button/toggle-iswatched-button.component';
+import { CoreModule } from './core/core.module';
+import { MoviesModule } from './movies/movies.module';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
     declarations: [
         AppComponent,
-        MovieGalleryComponent,
-        MovieCardComponent,
-        SingleMoviePageComponent,
-        HeaderComponent,
-        MenuComponent,
-        RatingComponent,
-        TowatchListComponent,
-        TowatchListItemComponent,
-        LoginComponent,
-        NotFoundComponent,
-        ToggleIswatchedButtonComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        HttpClientModule,
-        FormsModule
+        CoreModule,
+        MoviesModule,
+        LoginModule
     ],
     providers: [],
     bootstrap: [AppComponent]
