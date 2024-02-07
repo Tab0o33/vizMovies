@@ -2,7 +2,7 @@
     <div (mouseleave)="onLeave()">
         <i *ngFor="let star of [1, 2, 3, 4, 5]" class="bi" [class.editable]="editable"
             [ngClass]="rating >= star ? 'bi-star-fill' : rating > star-1 ? 'bi-star-half' : 'bi-star'"
-            [ngStyle]="{'color': !rating ? 'grey' : 'gold'}" (click)="emitEvent(star)" (mouseenter)="onHover(star)"></i>
+            [ngStyle]="{'color': !rating ? 'grey' : 'gold'}" (click)="onclick(star)" (mouseenter)="onHover(star)"></i>
     </div>
     <p>{{title}}</p>
 </div>

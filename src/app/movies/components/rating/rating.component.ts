@@ -29,10 +29,12 @@ export class RatingComponent implements OnInit {
         this.rating = this.tempRating;
     }
 
-    emitEvent(star: number) {
-        this.rating = star;
-        this.tempRating = star;
-        this.markChanged.emit(star);
+    onclick(star: number) {
+        if (this.editable) {
+            this.rating = star;
+            this.tempRating = star;
+            this.markChanged.emit(star);
+        }
     }
 
 }
