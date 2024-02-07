@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { API_URL } from '../../properties';
+import { environment } from 'src/environments/environment';
 import { StorageService } from './storage.service';
 
-const AUTH_API = `${API_URL}/public/auth`;
+const AUTH_API = `${environment.apiUrl}/public/auth`;
 
 const HTTP_OPTIONS = {
     headers: new HttpHeaders({
